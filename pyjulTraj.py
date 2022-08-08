@@ -18,3 +18,9 @@ from julia import IPFitting
 file_name = "traj_2.1_0-100-1.xyz"
 index = "0:10:1"
 
+# >>> Main
+
+# > Traj init
+db = IPFitting.Data.read_xyz(file_name, verbose=False, index=":1",
+energy_key="", force_key="", virial_key="")
+
