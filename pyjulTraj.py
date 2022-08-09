@@ -6,16 +6,14 @@ import numpy as np
 from julia.api import Julia
 jl = Julia(compiled_modules=False)
 
-from julia import Main, Pkg
+from julia import Main, IPFitting #, Pkg
 
-# > Project activation
-pkgPath = os.path.realpath(__file__)
-Pkg.activate(pkgPath)
-
-from julia import IPFitting
+# > Project activation >> solved by changing the Julia project $PATH
+#pkgPath = os.path.realpath(__file__)
+#Pkg.activate(pkgPath)
 
 # >>> Input
-file_name = "traj_2.1_0-100-1.xyz"
+file_name = "examples/traj_2.1_0-100-1.xyz"
 index = "0:10:1"
 
 # >>> Main

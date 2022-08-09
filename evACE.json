@@ -1,0 +1,13 @@
+{
+	"trajectory" : {
+	"traj_file": "./examples/traj_2.1_0-100-1_newatoms.xyz",
+	"index": "0:100:1"
+	},
+
+	"ace_basis" : {
+		"species": ["H"],
+		"N": 3,
+		"maxdeg": 5,
+		"rcut": 5.5
+	}
+}
