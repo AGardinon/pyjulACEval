@@ -5,9 +5,13 @@
 	},
 
 	"ace_basis" : {
-		"species": ["H"],
+		"species": ["H", "C", "O", "F", "P", "Li", "V", "Sc"],
 		"N": 3,
-		"maxdeg": 5,
+		"maxdeg": 4,
 		"rcut": 5.5
+	},
+
+	"evaluation" : {
+		"c_atom" : "Li"
 	}
 }
