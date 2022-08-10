@@ -6,7 +6,7 @@
 # ----------------------------------------------------
 
 using ACE1pack
-
+include("misc.jl")
 
 # ----------------------------------------------------
 # --- GENERATING THE BASE
@@ -84,8 +84,16 @@ _params_to_species(dict::Nothing) = nothing
 
 # --- basis evaluation
 
-function ACEdescriptor(basis, traj_db, sites)
-    return [[ACE1pack.JuLIP.site_energy(basis, at_config.at, idx) for idx in sites] for at_config in traj_db]
+function ACEdescriptor(; traj_db, basis, c_atom)
+    # express central atom as Z
+    central_Z = findall(x->x==c_atom, 
+                elements_dict["symbols"])[1]
+    # get the indxs of the sites to be evaluated
+    eval_sites = findall(x->x==central_Z, traj_db[1].at.Z)
+
+    return [[ACE1pack.JuLIP.site_energy(ace_basis, at_conf.at, site) 
+            for site in eval_sites] 
+            for at_conf in traj_db]
 end
 
 # ----------------------------------------------------

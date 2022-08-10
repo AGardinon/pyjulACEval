@@ -9,4 +9,4 @@
 
 - how to make the two pieces talk in python
 - general inputs *via* toml or json dict file
-- 
+- understanding how to save the file obtained from Julia
