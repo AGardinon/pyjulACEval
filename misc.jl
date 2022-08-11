@@ -20,4 +20,13 @@ function parse_dict(s::String)
     return symbol_dict(d)
 end
 
+# --- dict key String to Symbol
+# - taken from ACE1pack routine
+_params_to_species(species::Union{AbstractArray{T}, Tuple{T, T}}) where T <: AbstractString  = 
+      Symbol.(species)
+
+_params_to_species(dict::Dict{Tuple{Tsym, Tsym}, Tval}) where Tsym <: AbstractString where Tval <: Any = 
+      Dict(Tuple(_params_to_species(d)) => val for (d, val) in dict)
+
+_params_to_species(dict::Nothing) = nothing
 # ----------------------------------------------------

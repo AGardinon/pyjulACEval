@@ -5,7 +5,10 @@
 #
 # ----------------------------------------------------
 
-using ACE1pack
+using ACE1, JuLIP
+# include traj stuff
+include("trajectory.jl")
+# include usefull stuff
 include("misc.jl")
 
 # ----------------------------------------------------
@@ -55,7 +58,7 @@ function dict_to_ace_basis(input::Dict)
     rin = get!(a, :rin, 0.1)
     D = SparsePSHDegree(; wL=1.5, csp=1.0)
 
-    return ACE1pack.ACE1.Utils.rpi_basis(;
+    return ACE1.Utils.rpi_basis(;
             species = _params_to_species(a[:species]),
             N = a[:N],
             maxdeg = a[:maxdeg],
@@ -66,17 +69,6 @@ function dict_to_ace_basis(input::Dict)
             )
 end
 
-
-# --- String to Symbol
-# - taken from ACE1pack routine
-_params_to_species(species::Union{AbstractArray{T}, Tuple{T, T}}) where T <: AbstractString  = 
-      Symbol.(species)
-
-_params_to_species(dict::Dict{Tuple{Tsym, Tsym}, Tval}) where Tsym <: AbstractString where Tval <: Any = 
-      Dict(Tuple(_params_to_species(d)) => val for (d, val) in dict)
-
-_params_to_species(dict::Nothing) = nothing
-
 # ----------------------------------------------------
 
 # ----------------------------------------------------
@@ -84,14 +76,9 @@ _params_to_species(dict::Nothing) = nothing
 
 # --- basis evaluation
 
-function ACEdescriptor(; traj_db, basis, c_atom)
-    # express central atom as Z
-    central_Z = findall(x->x==c_atom, 
-                elements_dict["symbols"])[1]
-    # get the indxs of the sites to be evaluated
-    eval_sites = findall(x->x==central_Z, traj_db[1].at.Z)
-
-    return [[ACE1pack.JuLIP.site_energy(ace_basis, at_conf.at, site) 
+function ACEdescriptor(; traj_db, basis, atom_c, at_idx_dict)
+    eval_sites = at_idx_dict[:idx][atom_c]
+    return [[ JuLIP.site_energy(basis, at_conf.at, site) 
             for site in eval_sites] 
             for at_conf in traj_db]
 end
