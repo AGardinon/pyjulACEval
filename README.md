@@ -8,7 +8,7 @@ This script is built using Packages and Functions that refer to the [ACE1pack](h
 
 ## Script
 
-...
+Julia and Python code to compute the ACE descriptor on a XYZ trajectory file (_under development_).
 
 ### input.json
 
