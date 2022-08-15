@@ -133,8 +133,6 @@ Manifest.toml
 Project.toml
 
 # develop list
-DEVELOP.md
+DEVELOP/
 
-# notebook
-*.ipynb
 

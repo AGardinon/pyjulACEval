@@ -1,6 +1,6 @@
 {
 	"trajectory" : {
-	"traj_file": "./examples/traj_2.1_0-100-1_newatoms.xyz",
+	"traj_file": "path/to/myxyz",
 	"index": "0:100:1"
 	},
 
