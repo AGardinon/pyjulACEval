@@ -1,4 +1,4 @@
-# -
+# --------------------------------------
 
 include("descriptor.jl")
 include("trajectory.jl")
@@ -24,26 +24,5 @@ function evACE(input::String)
 
     return Dict(:trajInfo => at_info_dict, :aceDescr => ace_descr)
 end
-
-
-# --------------------------------------
-#
-#   Main
-#
-# --------------------------------------
-
-# if abspath(PROGRAM_FILE) == @__FILE__
-
-#     using ArgParse
-#     parser = ArgParseSettings(description="Evaluate the ACE basis.")
-#     @add_arg_table parser begin
-#         "--params", "-p"
-#             help = "A JSON dict file with the paramters for the evaluation."
-#     end
-
-#     outputDict = evACE(parse_args(parser)["params"])
-#     println(typeof(outputDict[:aceDescr]))
-#     println("Idk how to save to file ...")
-# end
 
 # -- end

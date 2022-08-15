@@ -129,6 +129,6 @@ dmypy.json
 .pyre/
 
 # JULIA stuff
-#Manifest.toml
-#Project.toml
+Manifest.toml
+Project.toml
 
