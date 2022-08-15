@@ -33,8 +33,12 @@ The `ACEval.json` file stores the input values.
     }
 
 Brief explanation of the file's sections and entries:
+
 1. `trajectory`, contains inputs specific for the trajectory (XYZ file) handling:
-    - 
+    - `traj_file`: XYZ file path.
+    - `index`: chunk of the configuration to be read and analysed; `start:end:every`
+    
+2. `ace_basis`
 
 ### .jl version
 
