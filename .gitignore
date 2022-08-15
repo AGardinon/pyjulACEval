@@ -128,3 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# JULIA stuff
+Manifest.toml
+Project.toml
+
