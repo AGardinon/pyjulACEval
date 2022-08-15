@@ -45,6 +45,7 @@ Brief explanation of the file's sections and entries:
     - `rcut`: radial cutoff.
 
 _Default parameters_: `r0`, `pin`, `rin`, and `D`.
+
 Additional, and more specific information about the ACE basis can be found in the ACE1pack implementation ([tutorial](https://acesuit.github.io/ACE1pack.jl/dev/literate_tutorials/) section).
 
 
@@ -64,3 +65,13 @@ The output `output_dict` will be a dictionary with 2 main keys:
 - `aceDescr`: ACE descriptor design matrix $\[N_{conf} \times N_{atoms} \times N_{features}\]$
 
 ### .py version
+
+The python wrapper of the julia code can be run as
+
+    from julia.api import Julia
+    jl = Julia(compiled_modules=False)
+    from julia import Main
+
+    evACEfn = Main.include("evACE.jl")
+    output_dict = evACEfn("evACE.json")
+
